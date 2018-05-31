@@ -62,3 +62,5 @@ Data validation is essentially negative: instead of printing lines with desirabl
 { temp = $1; $1 = $2; $2 = temp; print}
 ```
 5.`{$2 =""; print}` prints every line after erasing the second fields
+
+#### Chapter 2 look in detail
