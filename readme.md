@@ -64,3 +64,29 @@ Data validation is essentially negative: instead of printing lines with desirabl
 5.`{$2 =""; print}` prints every line after erasing the second fields
 
 ### Chapter 2 look in detail
+**Number or String ? **
+Only two types of data in awk: `numbers ` and `strings of characters`. Uninitialized variables are created with the numeric value *0* and the string value *""*. Nnexsitense fileds and fields that are explicitly nulkl has only the string value *""*.
+
+In an arithmetic expression like `pop + $3 `, the operand *pop* and *$3* must be numberic.
+In a string expression like `$1 $2 `, the operand *$1* and *$2* must be strings to be concatenated, so they will be coerced to strings if necessary.
+
+In the assignment `v = e`,  both the assignment and the variable *v* acquire the type of the expression *e*.
+In a comparison expression like ` x == y `, if both operands are numeric, the comparison is numeric; otherwise, any numeric operand is coerced to string and the comparison is made on the string values.
+
+Two idioms for coercing an expression of one type to the other:
+* `number "" ` concatenate a null string to number to coerce it to a string
+* `string + 0 `add zero to string to coerce it to a number
+
+**Arrays**
+the characteristic that sets awk arrays apart from those in most other language is that subscripts are *strings*. 
+```
+/Asia/      { pop["Asia"] +=  $3 }
+/Europe/    { pop["Europe"] +=  $3 }
+END         { print "Asian population is ", pop["Asia"], "million."; 
+              print "European population is ", pop["Europe"], "million." }
+``` 
+If we had written *pop[Asia]* instead of *pop["Asia"]*, the expression would have used the value od the variable *Asia* as the subscript, and since the variable is uninitialized, the values would have accumulated in *pop[""]*.
+
+Strings are versatile array subscripts, but the behavior of numeric subscripts are strings may sometimes appear counterintuitive. Since the string values of 1 and *"1"* are the same, arr[1] is the same as arr["1"]. But notice that 01 is not the same string as 1 and the string 10 comes before the string 2.
+
+
