@@ -90,3 +90,32 @@ If we had written *pop[Asia]* instead of *pop["Asia"]*, the expression would hav
 Strings are versatile array subscripts, but the behavior of numeric subscripts are strings may sometimes appear counterintuitive. Since the string values of 1 and *"1"* are the same, arr[1] is the same as arr["1"]. But notice that 01 is not the same string as 1 and the string 10 comes before the string 2.
 
 
+**User-defined functions**
+```
+function *name*(parameter-list){
+    statements
+}
+```
+for example, the function computes the maximum of its arguments:
+```
+{ print max( $1, max($2,$3) ) } # print maximum of $1, $2, $3
+function max(m,n){
+    return m>n ? m:n
+}
+```
+When a function is called with an agument like $1, which is just an ordinary variable, the function is given a caopy , not the variable itself.
+The jargon is that such variables , called "scalars"  are passed `by value`.
+Arrays are not copied, however, so it is possible for the function to alter array elements or create new ones. this is called `by reference`.
+
+
+**Command-line variable assignments**
+An awk command line can have serveral forms:
+
+```
+awk 'program' f1 f2 ...
+awk -f progfile f1 f2 ...
+awk -Fseq 'program' f1 f2 ...
+awk -Fseq -f progfile f1 f2 ...
+
+```
+
