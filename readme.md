@@ -119,3 +119,17 @@ awk -Fseq -f progfile f1 f2 ...
 
 ```
 
+**Command-line arguments**
+The command line arguments are available to the awk program in a buildt-in array calle *ARGV*, the value of the buil-in variable *ARGC* is one more than the number of arguments. As the name of command *awk* is counted as argument zero, as it is in C program.
+
+ With the command line ` awk -f progfile a v=1 b`, *ARGC* has the value 4, ARGV[0] contains *awk*, ARGV[1] contains *a*, ARGV[2] contains *v=1*,ARGV[3] contains *b*.
+
+**local variable list in function**
+ This function deletes all the elements in an array (recall that the extra whitespace signifies the start of the local variable list):
+ ```
+ function delarray(a,    i)
+ {
+     for (i in a)
+        delete a[i]
+ }
+ ```
