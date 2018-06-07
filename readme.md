@@ -134,4 +134,12 @@ The command line arguments are available to the awk program in a buildt-in array
  }
  ```
 
- 
+ **Packaged query**
+ when a query is frequently asked, it makes sense ti package it into a comamnd that can be invoked without much typing.
+
+ Suppose we want to determine the population, area, and popolation density of various contries with raw data. 
+| COUNTRY  |  AREA |  POPULATION |  CONTINENT |
+|----------|-------|-------------|------------|
+|  USSR |   8469|  275 | Asia |
+| Canada  | 3852  |  25 |  North America |
+|  China |  3705 |  1032 |   Asia|
