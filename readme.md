@@ -143,3 +143,23 @@ The command line arguments are available to the awk program in a buildt-in array
 |  USSR |   8469|  275 | Asia |
 | Canada  | 3852  |  25 |  North America |
 |  China |  3705 |  1032 |   Asia|
+| USA  | 3615  |  237 |  North America |
+|  India |  1267 |  746 |   Asia|
+
+Follwing program is to get info by specifying courtries names.
+```
+awk '
+# info.awk -- packaged query to get more specifi info of each country
+
+BEGIN { FS = "\t" }
+$1 ~ /'$1'/ {
+    printf("%s:\n", $1)
+    printf("\t%d million people \n", $3)
+    printf("\t%.3f million sq. mi. \n", $2/1000)
+    printf("\t%.1f people per sq. mi. \n", 1000*$3/$2)
+
+}'  coutries.data
+```
+
+run command `bash info.awk 'Chi|USA'` to retrieve information by specifying coutries names.
+
