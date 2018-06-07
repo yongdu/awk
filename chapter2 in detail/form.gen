@@ -1,0 +1,16 @@
+# form.gen -- generate form letters
+# input:  prototype file letter.text , data lines
+# output: one form leteter per data lines
+
+BEGIN { FS= "\t"
+    while(getline <"template.data" >  0) # read from template letter
+        form[++n] = $0
+}
+{
+    for (i = 1; i<=n; i++){ # read data line
+        temp = form[i]
+        for (j=1;j<=NF;j++)
+            gsub("#" j, $j,temp)
+        print temp
+    }
+}
