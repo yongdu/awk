@@ -89,7 +89,25 @@ If we had written *pop[Asia]* instead of *pop["Asia"]*, the expression would hav
 
 Strings are versatile array subscripts, but the behavior of numeric subscripts are strings may sometimes appear counterintuitive. Since the string values of 1 and *"1"* are the same, arr[1] is the same as arr["1"]. But notice that 01 is not the same string as 1 and the string 10 comes before the string 2.
 
+**The getline function**
+getline fetches the next inout record and performs the normal field-spilitting operations on it. It sets NF,NR, and FNR;it returns below results.
+*return 1  -- there was a record present
+*return 0  -- end-of-file was encountered
+*retrun -1 -- some error occurred (such as failure to open a file)
 
+The expression `getline x` reads the next records into the variable x and increments NR and FNR. No spilitting is done; NF is not set.
+
+The expression `getline < "file"` reads from `file` instead of the current input. It has no effect on NR or FNR, but the field spilitting is performed and NF is set.
+
+The expression `getline x <"file"` get the next record from `file` into x, no splitting is done, and NF , FNR and FNR are untouched.
+|            EXPRESSION           |          SET              |
+|:--------------------------------|---------------------------|
+|              getline            |       $0, NF,NR,FNR       |
+|          getline var            |       var,NF,FNR          | 
+|          getline <file          |       $0,NF               | 
+|          getline var <file      |       var                 | 
+|          cmd | getline          |       $0,NF               | 
+|          cmd | getline var      |       var                 | 
 **User-defined functions**
 ```
 function *name*(parameter-list){
