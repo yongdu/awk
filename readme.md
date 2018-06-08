@@ -100,6 +100,7 @@ The expression `getline x` reads the next records into the variable x and increm
 The expression `getline < "file"` reads from `file` instead of the current input. It has no effect on NR or FNR, but the field spilitting is performed and NF is set.
 
 The expression `getline x <"file"` get the next record from `file` into x, no splitting is done, and NF , FNR and FNR are untouched.
+
 |            EXPRESSION           |          SET              |
 |:--------------------------------|---------------------------|
 |              getline            |       $0, NF,NR,FNR       |
@@ -108,6 +109,8 @@ The expression `getline x <"file"` get the next record from `file` into x, no sp
 |          getline var <file      |       var                 | 
 |          cmd | getline          |       $0,NF               | 
 |          cmd | getline var      |       var                 | 
+
+
 **User-defined functions**
 ```
 function *name*(parameter-list){
