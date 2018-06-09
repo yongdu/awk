@@ -185,3 +185,41 @@ $1 ~ /'$1'/ {
 
 run command `bash info.awk 'Chi|USA'` to retrieve information by specifying coutries names.
 
+
+#### Relational database system
+an awk-like query language called `q`, a data dictionary called the `refile`, and a query processor called `qawk` that translates `q` queries into awk programs.
+
+Relational data base terms:
+* table -- a file 
+* attributes -- the columns 
+
+a `natural join`, or `join` for short, is an operator that combines two tables into one the basis of their common attributes. The attributes of the resulting table are all the attributes of the two tables being joined, with dupicates removed.
+
+Notice that the join of two tables
+
+
+| ATT1     |  ATT2 |  ATT3       |  
+|----------|------:|------------:|
+|  A       |  w    |  p          | 
+|  B       |  x    |  q          | 
+|  B       |  y    |  r          | 
+|  C       |  z    |  s          | 
+
+
+| ATT1     |  ATT4 |
+|----------|------:|
+|  A       |  1    | 
+|  A       |  2    |
+|  B       |  3    |
+
+| ATT1     |  ATT2 |  ATT3       |  ATT4 |
+|----------|------:|------------:|------:|
+|  A       |  w    |  p          |  1    | 
+|  A       |  w    |  p          |  2    | 
+|  B       |  x    |  q          |  3    |
+|  B       |  x    |  q          |  3    |
+
+
+ 
+ 
+
